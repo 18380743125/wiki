@@ -1,15 +1,15 @@
 package com.tangl.wiki.controller;
 
-import com.tangl.wiki.po.EbookPO;
+import com.tangl.wiki.po.EbookQueryPO;
+import com.tangl.wiki.po.EbookSavePO;
 import com.tangl.wiki.response.CommonResponse;
 import com.tangl.wiki.service.EbookService;
-import com.tangl.wiki.vo.EbookVO;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.tangl.wiki.vo.EbookQueryVO;
+import com.tangl.wiki.vo.PageVO;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
-import java.util.List;
+import javax.validation.Valid;
 
 /**
  * @author tangl
@@ -23,10 +23,24 @@ public class EbookController {
     private EbookService ebookService;
 
     @GetMapping("/list")
-    public CommonResponse<List<EbookVO>> list(EbookPO ebookPO) {
-        CommonResponse<List<EbookVO>> commonResponse = new CommonResponse<>();
-        List<EbookVO> list = ebookService.list(ebookPO);
+    public CommonResponse<PageVO<EbookQueryVO>> list(@Valid EbookQueryPO ebookPO) {
+        CommonResponse<PageVO<EbookQueryVO>> commonResponse = new CommonResponse<>();
+        PageVO<EbookQueryVO> list = ebookService.list(ebookPO);
         commonResponse.setData(list);
+        return commonResponse;
+    }
+
+    @PostMapping("/save")
+    public CommonResponse<?> save(EbookSavePO ebookSavePO) {
+        CommonResponse<?> commonResponse = new CommonResponse<>();
+        ebookService.save(ebookSavePO);
+        return commonResponse;
+    }
+
+    @DeleteMapping("/delete/{id}")
+    public CommonResponse<?> delete(@PathVariable Long id) {
+        CommonResponse<?> commonResponse = new CommonResponse<>();
+        ebookService.delete(id);
         return commonResponse;
     }
 }

@@ -1,6 +1,11 @@
-package com.tangl.wiki.domain;
+package com.tangl.wiki.po;
 
-public class Ebook {
+/**
+ * @author tangl
+ * @description
+ * @create 2023-08-26 21:59
+ */
+public class EbookSavePO {
     private Long id;
 
     private String name;

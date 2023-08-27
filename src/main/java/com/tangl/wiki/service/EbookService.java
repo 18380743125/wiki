@@ -1,18 +1,20 @@
 package com.tangl.wiki.service;
 
-import com.tangl.wiki.po.EbookPO;
-import com.tangl.wiki.vo.EbookVO;
-import org.springframework.stereotype.Service;
-
-import java.util.List;
+import com.tangl.wiki.po.EbookQueryPO;
+import com.tangl.wiki.po.EbookSavePO;
+import com.tangl.wiki.vo.EbookQueryVO;
+import com.tangl.wiki.vo.PageVO;
 
 /**
  * @author tangl
  * @description
  * @create 2023-08-24 22:28
  */
-@Service
 public interface EbookService {
 
-    List<EbookVO> list(EbookPO ebookPO);
+    PageVO<EbookQueryVO> list(EbookQueryPO ebookPO);
+
+    void save(EbookSavePO ebookSavePO);
+
+    void delete(Long id);
 }

@@ -5,7 +5,7 @@ import org.springframework.stereotype.Component;
 import java.text.ParseException;
 
 /**
- * Twitter的分布式自增ID雪花算法
+ * Twitter的分布式自增 ID 雪花算法
  **/
 @Component
 public class SnowFlake {
@@ -13,14 +13,14 @@ public class SnowFlake {
     /**
      * 起始的时间戳
      */
-    private final static long START_STMP = 1609459200000L; // 2021-01-01 00:00:00
+    private final static long START_STMP = 1693059422226L; // 2023-08-26 22:17:02
 
     /**
      * 每一部分占用的位数
      */
-    private final static long SEQUENCE_BIT = 12; //序列号占用的位数
-    private final static long MACHINE_BIT = 5;   //机器标识占用的位数
-    private final static long DATACENTER_BIT = 5;//数据中心占用的位数
+    private final static long SEQUENCE_BIT = 12; // 序列号占用的位数
+    private final static long MACHINE_BIT = 5;   // 机器标识占用的位数
+    private final static long DATACENTER_BIT = 5;// 数据中心占用的位数
 
     /**
      * 每一部分的最大值

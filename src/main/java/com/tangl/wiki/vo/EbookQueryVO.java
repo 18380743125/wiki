@@ -1,6 +1,6 @@
 package com.tangl.wiki.vo;
 
-public class EbookVO {
+public class EbookQueryVO {
     private Long id;
 
     private String name;
@@ -93,20 +93,17 @@ public class EbookVO {
 
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append(getClass().getSimpleName());
-        sb.append(" [");
-        sb.append("Hash = ").append(hashCode());
-        sb.append(", id=").append(id);
-        sb.append(", name=").append(name);
+        final StringBuffer sb = new StringBuffer("EbookQueryVO{");
+        sb.append("id=").append(id);
+        sb.append(", name='").append(name).append('\'');
         sb.append(", category1Id=").append(category1Id);
         sb.append(", category2Id=").append(category2Id);
-        sb.append(", description=").append(description);
-        sb.append(", cover=").append(cover);
+        sb.append(", description='").append(description).append('\'');
+        sb.append(", cover='").append(cover).append('\'');
         sb.append(", docCount=").append(docCount);
         sb.append(", viewCount=").append(viewCount);
         sb.append(", voteCount=").append(voteCount);
-        sb.append("]");
+        sb.append('}');
         return sb.toString();
     }
 }
