@@ -33,11 +33,11 @@ public class CommonResponse<T> {
         this.message = message;
     }
 
-    public T getData() {
+    public T getContent() {
         return content;
     }
 
-    public void setData(T content) {
+    public void setContent(T content) {
         this.content = content;
     }
 

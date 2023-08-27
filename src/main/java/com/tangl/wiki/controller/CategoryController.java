@@ -27,7 +27,7 @@ public class CategoryController {
     public CommonResponse<PageVO<CategoryQueryVO>> list(@Valid CategoryQueryPO categoryQueryPO) {
         CommonResponse<PageVO<CategoryQueryVO>> commonResponse = new CommonResponse<>();
         PageVO<CategoryQueryVO> list = categoryService.list(categoryQueryPO);
-        commonResponse.setData(list);
+        commonResponse.setContent(list);
         return commonResponse;
     }
 
@@ -35,12 +35,12 @@ public class CategoryController {
     public CommonResponse<List<CategoryQueryVO>> all() {
         CommonResponse<List<CategoryQueryVO>> commonResponse = new CommonResponse<>();
         List<CategoryQueryVO> list = categoryService.all();
-        commonResponse.setData(list);
+        commonResponse.setContent(list);
         return commonResponse;
     }
 
     @PostMapping("/save")
-    public CommonResponse<?> save(CategorySavePO categorySavePO) {
+    public CommonResponse<?> save(@RequestBody @Valid CategorySavePO categorySavePO) {
         CommonResponse<?> commonResponse = new CommonResponse<>();
         categoryService.save(categorySavePO);
         return commonResponse;

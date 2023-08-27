@@ -1,6 +1,6 @@
-package com.tangl.wiki.domain;
+package com.tangl.wiki.vo;
 
-public class User {
+public class UserQueryVO {
     private Long id;
 
     private String loginName;
@@ -54,5 +54,4 @@ public class User {
         sb.append("]");
         return sb.toString();
     }
-
 }

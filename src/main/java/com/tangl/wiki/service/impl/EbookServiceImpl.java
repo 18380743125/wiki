@@ -41,6 +41,9 @@ public class EbookServiceImpl implements EbookService {
         if (!ObjectUtils.isEmpty(ebookPO.getName())) {
             criteria.andNameLike("%" + ebookPO.getName() + "%");
         }
+        if (!ObjectUtils.isEmpty(ebookPO.getCategoryId2())) {
+            criteria.andCategory2IdEqualTo(ebookPO.getCategoryId2());
+        }
         List<Ebook> ebooks = ebookMapper.selectByExample(ebookExample);
         PageInfo<Ebook> pageInfo = new PageInfo<>(ebooks);
         PageVO<EbookQueryVO> pageVO = new PageVO<>();
@@ -55,6 +58,9 @@ public class EbookServiceImpl implements EbookService {
         if (ObjectUtils.isEmpty(ebook.getId())) {
             // 新增
             ebook.setId(snowFlake.nextId());
+            ebook.setDocCount(0);
+            ebook.setViewCount(0);
+            ebook.setVoteCount(0);
             ebookMapper.insert(ebook);
         } else {
             // 修改

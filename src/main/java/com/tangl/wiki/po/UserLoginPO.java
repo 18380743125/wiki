@@ -1,21 +1,16 @@
-package com.tangl.wiki.domain;
+package com.tangl.wiki.po;
 
-public class User {
-    private Long id;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Pattern;
 
+public class UserLoginPO {
+
+    @NotEmpty(message = "用户名不能为空")
     private String loginName;
 
-    private String name;
-
+    @NotEmpty(message = "密码不能为空")
+    @Pattern(regexp = "^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,32}$", message = "密码不正确")
     private String password;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public String getLoginName() {
         return loginName;
@@ -23,14 +18,6 @@ public class User {
 
     public void setLoginName(String loginName) {
         this.loginName = loginName;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public String getPassword() {
@@ -47,12 +34,9 @@ public class User {
         sb.append(getClass().getSimpleName());
         sb.append(" [");
         sb.append("Hash = ").append(hashCode());
-        sb.append(", id=").append(id);
         sb.append(", loginName=").append(loginName);
-        sb.append(", name=").append(name);
         sb.append(", password=").append(password);
         sb.append("]");
         return sb.toString();
     }
-
 }

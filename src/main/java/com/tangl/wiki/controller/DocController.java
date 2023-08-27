@@ -29,7 +29,7 @@ public class DocController {
     public CommonResponse<PageVO<DocQueryVO>> list(@Valid DocQueryPO docQueryPO) {
         CommonResponse<PageVO<DocQueryVO>> commonResponse = new CommonResponse<>();
         PageVO<DocQueryVO> list = docService.list(docQueryPO);
-        commonResponse.setData(list);
+        commonResponse.setContent(list);
         return commonResponse;
     }
 
@@ -37,12 +37,12 @@ public class DocController {
     public CommonResponse<List<DocQueryVO>> all(@PathVariable Long ebookId) {
         CommonResponse<List<DocQueryVO>> commonResponse = new CommonResponse<>();
         List<DocQueryVO> list = docService.all(ebookId);
-        commonResponse.setData(list);
+        commonResponse.setContent(list);
         return commonResponse;
     }
 
     @PostMapping("/save")
-    public CommonResponse<?> save(DocSavePO docSavePO) {
+    public CommonResponse<?> save(@RequestBody @Valid DocSavePO docSavePO) {
         CommonResponse<?> commonResponse = new CommonResponse<>();
         docService.save(docSavePO);
         return commonResponse;
@@ -60,7 +60,7 @@ public class DocController {
     public CommonResponse<String> findContent(@PathVariable Long id) {
         CommonResponse<String> commonResponse = new CommonResponse<>();
         String content = docService.findContent(id);
-        commonResponse.setData(content);
+        commonResponse.setContent(content);
         return commonResponse;
     }
 }

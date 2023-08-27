@@ -26,12 +26,12 @@ public class EbookController {
     public CommonResponse<PageVO<EbookQueryVO>> list(@Valid EbookQueryPO ebookPO) {
         CommonResponse<PageVO<EbookQueryVO>> commonResponse = new CommonResponse<>();
         PageVO<EbookQueryVO> list = ebookService.list(ebookPO);
-        commonResponse.setData(list);
+        commonResponse.setContent(list);
         return commonResponse;
     }
 
     @PostMapping("/save")
-    public CommonResponse<?> save(EbookSavePO ebookSavePO) {
+    public CommonResponse<?> save(@RequestBody @Valid EbookSavePO ebookSavePO) {
         CommonResponse<?> commonResponse = new CommonResponse<>();
         ebookService.save(ebookSavePO);
         return commonResponse;

@@ -41,10 +41,10 @@ public class DocServiceImpl implements DocService {
     public PageVO<DocQueryVO> list(DocQueryPO docPO) {
         PageHelper.startPage(docPO.getPage(), docPO.getSize());
         DocExample docExample = new DocExample();
-        List<Doc> categories = docMapper.selectByExample(docExample);
-        PageInfo<Doc> pageInfo = new PageInfo<>(categories);
+        List<Doc> docs = docMapper.selectByExample(docExample);
+        PageInfo<Doc> pageInfo = new PageInfo<>(docs);
         PageVO<DocQueryVO> pageVO = new PageVO<>();
-        pageVO.setList(CopyUtil.copyList(categories, DocQueryVO.class));
+        pageVO.setList(CopyUtil.copyList(docs, DocQueryVO.class));
         pageVO.setTotal(pageInfo.getTotal());
         return pageVO;
     }
@@ -54,8 +54,8 @@ public class DocServiceImpl implements DocService {
         DocExample docExample = new DocExample();
         docExample.createCriteria().andEbookIdEqualTo(ebookId);
         docExample.setOrderByClause("sort asc");
-        List<Doc> categories = docMapper.selectByExample(docExample);
-        return CopyUtil.copyList(categories, DocQueryVO.class);
+        List<Doc> docs = docMapper.selectByExample(docExample);
+        return CopyUtil.copyList(docs, DocQueryVO.class);
     }
 
     @Override
